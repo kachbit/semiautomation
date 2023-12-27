@@ -1,2 +1,2 @@
-# semiautomation
- Automatic seminary Scraping AI Agent - ASSAIA
+# semiautomation project ASSAIA
+ Automatic seminary Scraping AI Agent
