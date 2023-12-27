@@ -56,7 +56,7 @@ const password = "209kpkp281";
           currentDate = new Intl.DateTimeFormat('en-US', options).format(currentDate);
           console.log("y");
           console.log("d", currentDate);
-          currentDate = "Sep 29"; // delelte this
+          //currentDate = "Sep 29"; // delelte this
           const dueDateElements = document.querySelectorAll('.due_date_display');
           console.log('test111', dueDateElements);
 
@@ -170,15 +170,20 @@ const password = "209kpkp281";
 
      //   await page.click('a.btn.btn-primary');
       }
+      await page.waitForSelector('header.quiz-header', { visible: true });
       var prompt = await page.evaluate(() => {
         var prompt = {};
         var data = document.querySelector("header.quiz-header").innerText;
-        document.querySelectorAll(".display_question.question.essay_question")
+      //  document.querySelectorAll(".display_question.question.essay_question")
+      console.log("1check")  
+      document.querySelectorAll(".unanswered")
         .forEach(question => { 
           prompt[question.id] = `${data} \n\n\n CHATGPT, respond to the following text with simple short sentences at the level of a 9th grader: \n\n\n ${question.querySelector(".question_text.user_content").innerText}` 
         });
-        console.log(prompt);
+        console.log(JSON.stringify(prompt));
+        return prompt;
       });
+      console.log(prompt);
     }
     setTimeout(async () => {
       await browser.close();
